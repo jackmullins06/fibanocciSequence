@@ -1,34 +1,24 @@
 #include <iostream>
 
-int promptForInput() {
-    int nth_term;
-
-    std::cout << "Please enter the number you would like the program to calculate the Fibanocci Sequence up to: " << std::endl;
-    std::cin >> nth_term;
-
-    return nth_term;
-}
-
 void CalculateSequence(int nth_term) {
-    long firstTerm = 0, secondTerm = 1;
+    long currentTerm = 0, nextTerm = 1;
 
-    std::cout << firstTerm << std::endl; 
-    std::cout << secondTerm << std::endl; 
+    for (int i = 1; i <= nth_term; i++) {
+        std::cout << currentTerm << " ";
 
-    while(secondTerm <= nth_term) {
-        long thirdTerm = firstTerm + secondTerm;
-
-        std::cout << thirdTerm << std::endl;
-
-        firstTerm = secondTerm;
-        secondTerm = thirdTerm;
+        long tempTerm = currentTerm + nextTerm;
+        currentTerm = nextTerm;
+        nextTerm = tempTerm;
     }
+    std::cout << std::endl;
 }
-
 
 int main() {
-    int nth_term = promptForInput();
+    int n;
+    std::cout << "Enter a positive integer: ";
+    std::cin >> n;
+    
+    CalculateSequence(n);
 
-    CalculateSequence(nth_term);
     return 0;
 }
